@@ -211,6 +211,8 @@ ggplot(data = RcVals) +
   theme_bw()
 ```
 
+![](rc_distribution.png)
+
 ### Examining the distribution of Rc
 
 Rc changes in such a way that when there are more nodes, the spread of minimum radii for full connectivity is smaller. Furthermore, the mean radius decreases logorithmically as the number of nodes increases.
@@ -269,6 +271,7 @@ grid.arrange(
   nrow = 2, ncol = 2
   )
 ```
+![](networks.png)
 
 ### Comparing the four networks
 
