@@ -155,7 +155,7 @@ ggplot(data = values, mapping = aes(x = log_ar, y = log_ct)) +
   labs(x = "Log sample area size", y = "Log # of unique species")
 ```
 
-![](logdata.jpg)
+![](log_data.jpg)
 
 ```{r}
 ## Write in some functions needed for regression analysis
