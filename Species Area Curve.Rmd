@@ -6,7 +6,7 @@ output: html_document
 ---
 ## ESPM 88B Final Project (Spring 2016)
 
-*Note: This is an adaptation to R of a project that was originally completed in Python using the Jupyter notebook system. In the spirit of preserving the progress in this portfolio, however, the code will not be significantly altered in its function from the original project.*
+*Note: This is a (partial) adaptation to R of a project that was originally completed in Python using the Jupyter notebook system. In the spirit of preserving the progress in this portfolio, however, the code will not be significantly altered in its function from the original project.*
 
 The species-area curve is a means of predicting how many unique species will be found in a region of a given size. Based on the simple premise that larger areas will tend to contain more species, this curve has been thoroughly studied, examining both the factors that contribute to the shape of the curve and the usefulness of the curve. The species-area curve is sometimes used by some ecologists as a rough estimator of species loss due to habitat destruction, or for comparing species abundance on islands of varying sizes within an archipelago. 
 
