@@ -155,7 +155,7 @@ ggplot(data = values, mapping = aes(x = log_ar, y = log_ct)) +
   labs(x = "Log sample area size", y = "Log # of unique species")
 ```
 
-![](logdata.jpg)
+![](log_data.jpg)
 
 ```{r}
 ## Write in some functions needed for regression analysis
@@ -195,4 +195,34 @@ regr_stats <- function(t, x, y) {
 regr_stats(t = values, x = values$log_ar, y = values$log_ct)
 ```
 
-![](log_lslr.jpg)
+We now have a regression line, and know its key statistics. However, this regression line is given in log-log units; it will be much more useful to convert our prediction line back into original units. To do so, we can form a set of predictions in original units; this is slightly less precise, but will suffice for the sake of visualization. The algebra behind this conversion is shown below:
+
+log(y) = m(log(x)) + b = log(x^m) + b
+
+y = 10b ^ * x ^ m
+
+```{r}
+predicted_value <- function(x, y) {
+  return(slope(x, y) * x + intercept(x, y))
+}
+
+values$pred_log <- predicted_value(values$log_ar, values$log_ct)
+
+values$pred_reg <- (10 ^ intercept(values$log_ar, values$log_ct) *
+                      values$sample_area ^ slope(values$log_ar, values$log_ct))
+```
+
+```{r}
+ggplot(data = values) +
+  geom_jitter(aes(x = sample_area, y = species_count), 
+             color = "darkblue", size = 1.25, alpha = 0.25) +
+  geom_line(aes(x = sample_area, y = pred_reg), color = "red", size = 2) +
+  labs(x = "Sample area size (square meters)", y = "Number of unique species") +
+  ggtitle("SAC with Prediction Line") +
+  theme_bw()
+```
+
+![](reg_lsrl.jpg)
+
+This regression line, once converted to original units, seems reasonable. However, it appears to underpredict species counts at lower sample areas, and overpredict species counts at higher sample areas. To check this suspicion, we will again look at a residual plot, this time in original units.
+
